@@ -1,0 +1,14 @@
+@import '~bootstrap/scss/functions';
+@import './helpers/variables';
+@import "~bootstrap/scss/utilities";
+@import './helpers/utilities'; 
+@import '~bootstrap/scss/bootstrap';
+// @import "~bootstrap/scss/utilities/api";
+@import './base/reset';
+@import './components/icons';
+@import './components/boxShadow';
+@import './components/textoverflow';
+@import './components/swiperSilde';
+@import './components/modalDetail';
+@import './pages/index';
+@import './pages/resultList.scss';

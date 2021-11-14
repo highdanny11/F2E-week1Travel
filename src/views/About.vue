@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <modelDetail ref="model"></modelDetail>
+  <button @click="showref()">123</button>
 </template>
+
+<script>
+import modelDetail from '../components/modalDetail.vue';
+
+export default {
+  components: {
+    modelDetail,
+  },
+  methods: {
+    showref() {
+      console.log(this.$refs.model.opModel());
+    },
+  },
+};
+</script>

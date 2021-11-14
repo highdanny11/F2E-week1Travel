@@ -1,0 +1,169 @@
+.roundShapeIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  position: relative;
+  &-primary {
+    background-color: #ff1d6c; // primary
+  }
+  &-secondary {
+    background-color: #ffb72c; //#FFB72C
+  }
+  &-danger {
+    background-color: #007350; //secondary
+  }
+  & .triangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-width: 0 9px 11px;
+    border-style: solid;
+    border-color: transparent transparent white;
+  }
+  & .square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    background-color: #fff;
+  }
+  & .round {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+}
+// 標題旁 實心三角形
+.triangleShapeIcon {
+  width: 0;
+  height: 0;
+  border-width: 0 10px 20px;
+  border-style: solid;
+  border-color: transparent transparent #ff1d6c;
+  &-xl {
+    width: 0;
+    height: 0;
+    border-width: 0 25px 35px;
+    border-style: solid;
+    border-color: transparent transparent #ff1d6c;
+    background-color: rgba(255,255,255,0.2);
+  }
+}
+// 標題旁 實心正方形
+.squareShapeIcon {
+  width: 20px;
+  height: 20px;
+  background-color: #ffb72c;
+  &-xl {
+    width: 50px;
+    height: 50px;
+    background-color: #ffb72c;
+  }
+}
+.roundShapeIcon {
+  &-xl {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $info;
+  }
+}
+// 定位按鈕
+.localIcon {
+  background-color: #ffb72c;
+  box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+// 搜尋按鈕
+.searchIcon {
+  background-color: $primary;
+  box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+//搜尋不到圖示
+.notfoundIcon {
+  background-color: $secondary;
+  width: 53.5px;
+  height: 53.5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeIcon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2);
+  border-radius: 8px;
+  background-color: $primary;
+}
+// 輪播按鈕
+.carouselBtnLeft {
+  background-color: #0d0b0c;
+  color: #fff;
+  box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.4s ease;
+  width: 32px;
+  height: 32px;
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+  }
+}
+.carouselBtnRight {
+  background-color: #fff;
+  color: #0d0b0c;
+  box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.4s ease;
+  width: 32px;
+  height: 32px;
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+  }
+}
+// 輪播滾動軸樣式修改
+.cardCarousel {
+  &-wrap {
+    overflow: auto;
+  }
+  &-wrap::-webkit-scrollbar {
+    display: none;
+  }
+  &-list {
+    transition: all 0.6s ease;
+  }
+}

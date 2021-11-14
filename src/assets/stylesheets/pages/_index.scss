@@ -1,0 +1,230 @@
+.header {
+  padding-top: 15px;
+  padding-bottom: 19px;
+  @include media-breakpoint-up(md) {
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+  @include media-breakpoint-up(lg) {
+    padding-top: 28px;
+    padding-bottom: 18px;
+  }
+  & .taiLogo {
+    width: 90px;
+    height: 52px;
+    @include media-breakpoint-up(md) {
+      width: 86px;
+      height: 50px;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 99px;
+      height: 57px;
+    }
+  }
+  &-options {
+    box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    &-link {
+      color: $success;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+.banner {
+  padding: 23px 27px;
+  &_wrap {
+    height: 486px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // 圖片要隨時間變換
+    background-image: url(https://s3-alpha-sig.figma.com/img/bd7a/7bea/773a7c33ba5496aa32fb0d43f798f4db?Expires=1636934400&Signature=Ob73w1Nsa9Dja6WElyT8lJLI2vH5M5DiVujqUwtg4K~bV35FQGjLGn--uQzrjyfbdCnRI3zq9XUfiNSUSc6h55feAyQBNyXyKzhBMP7i0jJRC0HF3QjB71LUCC446kVEY81S4XjL-v0KEDde3WbWTIMmObRNHREWYI6JXC8IG4QANj2b6UsRDnryq6dbOdGm6XXRRrRjx1DK2Ey7tFx7wrLEotmw8R30-DHmv~iU7AHtckitU~5Gh9se2bhJyhaWzgu5mTIUeNanqD6Zsbt6MgVR-jA00nLkEZ-aZ7ANElppFdvndQzd3WK~0j33k1I59D2Ivt5Fc1-TBXAnebFP0A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);
+    & h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 50px;
+      line-height: 59px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+      margin-bottom: 37px;
+    }
+  }
+}
+.hotActivitly {
+  margin-top: 40px;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 46px;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 60px;
+  }
+  & h2 {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  & .card-title {
+    font-size: 14px;
+    line-height: 21px;
+    @include media-breakpoint-up(lg) {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  }
+  & .card-text {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  & .card-footerTitle {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  & .card-img {
+    min-height: 96px;
+    @include media-breakpoint-up(lg) {
+      min-height: 196px;
+    }
+  }
+  & .stretched-link:hover ~ .d-flex .btn-outline-primary {
+    color: #fff;
+    background-color: $primary;
+  }
+  & .card-img,
+  .btn-outline-primary {
+    transition: all 0.4s ease;
+  }
+  & .card:hover .card-img {
+    transform: scale(1.2);
+  }
+}
+.hotRest,.recommedStay {
+  margin-top: 56px;
+  @include media-breakpoint-up(md) {
+    margin-top: 64px;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-top: 83px;
+  }
+  & h2 {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  & .card {
+    height: 188px;
+    @include media-breakpoint-up(lg) {
+      height: 243px;
+    }
+  }
+  & .card-img-top {
+    height: 96px;
+    @include media-breakpoint-up(lg) {
+      height: 137px;
+    }
+  }
+  & .card-title {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+  & .card-footerTitle {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 300;
+  }
+  & .col:nth-child(n + 11) {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+  & .col:nth-child(-n + 8) {
+    @include media-breakpoint-up(md) {
+      margin-bottom: 27px;
+    }
+  }
+  & .col:nth-child(-n + 5) {
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 35px;
+    }
+  }
+  & .col:nth-child(n + 2) {
+    margin-bottom: 19px;
+  }
+}
+.hotCity {
+  margin-top: 43px;
+  @include media-breakpoint-up(md) {
+    margin-top: 35px;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-top: 90px;
+  }
+  & h2 {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  &-area {
+    display: flex;
+    flex-direction: column;
+    height: 192px;
+    @include media-breakpoint-up(lg) {
+      height: 245px;
+    }
+  }
+  & .card-img {
+    height: 100%;
+    transition: all 0.4s ease;
+  }
+  & .card-title {
+    font-size: 20px;
+    line-height: 29px;
+    font-weight: 400;
+  }
+  & .card:hover .card-img {
+    filter: blur(2px);
+  }
+  & .col:nth-child(odd) .card {
+    height: 100%;
+  }
+  & .col:nth-child(even) .card {
+    height: 50%;
+  }
+  & .col:nth-child(n + 5):nth-child(even) .card {
+    height: 100%;
+  }
+  & .col:nth-child(n + 6):nth-child(odd) .card {
+    height: 50%;
+  }
+  & .carouselBtnLeft {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+  }
+  & .carouselBtnRight {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+  }
+}
+// 有頁碼稍微不一樣mt稍微不一樣
+footer {
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 54px;
+  @include media-breakpoint-up(lg) {
+    margin-top: 85px;
+  }
+}
+.box {
+  width: 100%;
+  height: 120px;
+  background-color: red;
+}

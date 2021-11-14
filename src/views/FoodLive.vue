@@ -14,21 +14,21 @@
       </router-link>
       <ul class="d-none d-md-flex list-unstyled">
         <li class="d-flex position-relative align-items-end">
-          <div class="roundShapeIcon roundShapeIcon-primary me-2">
+          <div class="roundShapeIcon roundShapeIcon-primary">
               <div class="triangle"></div>
           </div>
-          <router-link to="/"
+          <router-link href="#" to="/"
           class="stretched-link link-primary lh-24">台灣景點</router-link>
         </li>
         <li class="d-flex position-relative align-items-end ms-6">
-          <div class="roundShapeIcon roundShapeIcon-secondary me-2">
+          <div class="roundShapeIcon roundShapeIcon-secondary">
             <div class="square"></div>
           </div>
-          <router-link class="stretched-link link-secondary"
+          <router-link href="#" class="stretched-link link-secondary"
           to="/FoodLive">美食住宿</router-link>
         </li>
         <li class="d-flex position-relative align-items-end ms-6">
-          <div class="roundShapeIcon roundShapeIcon-danger me-2">
+          <div class="roundShapeIcon roundShapeIcon-danger">
             <div class="round"></div>
           </div>
           <a href="#" class="stretched-link link-danger">景點交通</a>
@@ -36,10 +36,8 @@
       </ul>
       <div class="d-flex align-items-center d-md-none">
         <!-- 手機搜尋 -->
-          <router-link :to='`/AttractionsResult/${sendSearch()}`'
-          @click="reload()"
-          class="searchIcon rounded-3 me-2">
-                <img :src="require('../assets/img/search.svg')" alt=""></router-link>
+          <a href="#" class="searchIcon rounded-3 me-2">
+                <img :src="require('../assets/img/search.svg')" alt=""></a>
           <a href="#" class="localIcon rounded-3">
             <img :src="require('../assets/img/GPS.svg')" alt=""></a>
       </div>
@@ -47,28 +45,20 @@
     <!-- 手機出現的功能列表-->
     <div class="header-options d-md-none">
       <ul class="d-flex justify-content-between list-unstyled">
-        <li>
-          <router-link
-          to="/" class="header-options-link text-decoration-none">景點活動</router-link></li>
-        <li>
-          <router-link
-          to="/FoodLive" class="header-options-link text-decoration-none">美食住宿</router-link></li>
-        <li>
-          <router-link
-          to="/" class="header-options-link text-decoration-none">景點交通</router-link></li>
+        <li><a href="#" class="header-options-link text-decoration-none">景點活動</a></li>
+        <li><a href="#" class="header-options-link text-decoration-none">美食住宿</a></li>
+        <li><a href="#" class="header-options-link text-decoration-none">景點交通</a></li>
       </ul>
     </div>
     <!-- 手機出現的功能列表-->
     <div class="d-flex align-items-center d-md-none">
         <div class="input-group">
-          <select v-model="option"
-          class="form-select me-1 inputShadow rounded-3">
-            <option value="all" selected>類別</option>
-            <option value="景點">景  點</option>
-            <option value="活動">活  動</option>
+          <select class="form-select me-1 inputShadow rounded-3">
+            <option selected>類別</option>
+            <option value="美食">美  食</option>
+            <option value="住宿">住  宿</option>
           </select>
-          <select v-model="area"
-          class="form-select me-1 inputShadow rounded-3">
+          <select class="form-select me-1 inputShadow rounded-3">
             <option value="all" selected>不分縣市</option>
             <option value="Taipei">臺  北  市</option>
             <option value="NewTaipei">新  北  市</option>
@@ -92,9 +82,7 @@
             <option value="KinmenCounty">金  門  縣</option>
           </select>
               <!-- 手機 -->
-          <router-link :to='`/AttractionsResult/${sendSearch()}`'
-          @click="reload()"
-          class="btn btn-primary text-white rounded-3">送出</router-link>
+          <a href="#" class="btn btn-primary text-white rounded-3">送出</a>
         </div>
       </div>
   </nav>
@@ -121,8 +109,8 @@
             <div class="input-group">
               <select class="form-select me-1 rounded-3" v-model="option">
                 <option value="all" selected>類別</option>
-                <option value="景點">景  點</option>
-                <option value="活動">活  動</option>
+                <option value="美食">美  食</option>
+                <option value="住宿">住  宿</option>
               </select>
               <select class="form-select me-1 rounded-3" v-model="area">
                 <option value="all" selected>不分縣市</option>
@@ -148,7 +136,7 @@
                 <option value="KinmenCounty">金  門  縣</option>
               </select>
               <!-- 桌機搜尋篩選功能列表 -->
-              <router-link :to='`/AttractionsResult/${sendSearch()}`'
+              <router-link :to='`/FoodLive/FoodResult/${sendSeach()}`'
               class="searchIcon rounded-3" @click="reload()">
                 <img :src="require('../assets/img/search.svg')" alt=""></router-link>
             </div>
@@ -170,14 +158,12 @@
       <!-- table搜尋篩選功能列表 -->
       <div class="d-flex align-items-center">
         <div class="input-group">
-          <select v-model="option"
-          class="form-select me-1 inputShadow rounded-3">
-            <option value="all" selected>類別</option>
-            <option value="景點">景  點</option>
-            <option value="活動">活  動</option>
+          <select class="form-select me-1 inputShadow rounded-3">
+            <option selected>類別</option>
+            <option value="美食">美  食</option>
+            <option value="住宿">住  宿</option>
           </select>
-          <select v-model="area"
-          class="form-select me-1 inputShadow rounded-3">
+          <select class="form-select me-1 inputShadow rounded-3">
             <option value="all" selected>不分縣市</option>
             <option value="Taipei">臺  北  市</option>
             <option value="NewTaipei">新  北  市</option>
@@ -201,9 +187,8 @@
             <option value="KinmenCounty">金  門  縣</option>
           </select>
           <!-- 桌機搜尋 -->
-        <router-link href="#" :to='`/AttractionsResult/${sendSearch()}`'
-        class="searchIcon rounded-3" @click="reload()">
-          <img :src="require('../assets/img/search.svg')" alt=""></router-link>
+        <a href="#" class="searchIcon rounded-3">
+          <img :src="require('../assets/img/search.svg')" alt=""></a>
         </div>
       </div>
   </div>
@@ -218,7 +203,6 @@ export default {
     return {
       area: 'all',
       option: 'all',
-      local: null,
       isRouterAlive: true,
     };
   },
@@ -228,7 +212,7 @@ export default {
     };
   },
   methods: {
-    sendSearch() {
+    sendSeach() {
       const data = `${this.option} ${this.area}`;
       return data;
     },
