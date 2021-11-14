@@ -14,21 +14,21 @@
       </router-link>
       <ul class="d-none d-md-flex list-unstyled">
         <li class="d-flex position-relative align-items-end">
-          <div class="roundShapeIcon roundShapeIcon-primary">
+          <div class="roundShapeIcon roundShapeIcon-primary me-2">
               <div class="triangle"></div>
           </div>
           <router-link href="#" to="/"
           class="stretched-link link-primary lh-24">台灣景點</router-link>
         </li>
         <li class="d-flex position-relative align-items-end ms-6">
-          <div class="roundShapeIcon roundShapeIcon-secondary">
+          <div class="roundShapeIcon roundShapeIcon-secondary me-2">
             <div class="square"></div>
           </div>
           <router-link href="#" class="stretched-link link-secondary"
           to="/FoodLive">美食住宿</router-link>
         </li>
         <li class="d-flex position-relative align-items-end ms-6">
-          <div class="roundShapeIcon roundShapeIcon-danger">
+          <div class="roundShapeIcon roundShapeIcon-danger me-2">
             <div class="round"></div>
           </div>
           <a href="#" class="stretched-link link-danger">景點交通</a>
