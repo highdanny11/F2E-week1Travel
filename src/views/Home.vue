@@ -9,7 +9,7 @@
       <router-link to="/">
       <img class="cursor-pointer taiLogo position-absolute position-md-static
       top-50 start-50 translate-middle-md-0 translate-middle"
-      src="https://s3-alpha-sig.figma.com/img/f4cf/0171/3e2027e6418af791f7733611da855498?Expires=1636934400&Signature=V88KC6BVgntEfBSCHn6sbKiGaVUeZav~p-bRmvrzpE8owAWJv5ARTIDAFgzlPh43F-F6YLeHFZNjq-s-u2d64yJiGVNGngDhl0pcKERMwpCdZu6QH~B0Ej0HI4UoHh2zJbBMDGKxevxM~Yi2fjAP4EJPn0Jcnl~C7Sn~kXrpr9qBjY68wAGlyvt~HVu2Y-jsx2GsIuyIXwZD-Unx0TTTPiYzCRdG0GyQ44Q~0wJ0Kc5oMxQbrpakN5bhmjCCizIXFAt~elZBaU4HdyJVkbOUiOyjEm~Dk88~LLtChOh5ycMjQblB~gceXzUw1o~T60kNEOm9K5zsXygzytfoqw20Hg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      :src="require('../assets/img/Group 4.png')"
       alt="">
       </router-link>
       <ul class="d-none d-md-flex list-unstyled">
