@@ -1,5 +1,5 @@
 <template>
-<hotrestaurant></hotrestaurant>
+  <hotrestaurant></hotrestaurant>
   <recommedStay></recommedStay>
 </template>
 

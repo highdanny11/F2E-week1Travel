@@ -13,11 +13,11 @@
             class="card-img-top" alt="..." />
             <div class="card-body d-flex flex-column justify-content-between pt-2 px-0 pb-0">
               <h4 class="card-title text-overflowHiden2 mb-0">
-                {{item.Name}}</h4>
+                {{item.HotelName}}</h4>
               <h3 class="card-footerTitle mb-0 text-info text-overflow">
                 <i class="bi bi-geo-alt-fill text-primary me-2"></i>{{item.Address}}
                 <!-- 連結 -->
-                <a href="#" class="stretched-link"></a>
+                <a href="#" class="stretched-link" @click.prevent="showModal(item)"></a>
               </h3>
             </div>
           </div>
@@ -25,12 +25,17 @@
       </div>
     </div>
   </section>
+  <modalActRet ref="modalactret"/>
 </template>
 
 <script>
-import JsSHA from 'jssha';
+import getAuthorizationHeader from '@/assets/javascript/AuthorizationHeader';
+import modalActRet from '@/components/modalActRet.vue';
 
 export default {
+  components: {
+    modalActRet,
+  },
   data() {
     return {
       data: [],
@@ -39,31 +44,22 @@ export default {
     };
   },
   methods: {
-    getAuthorizationHeader() {
-      const GMTString = new Date().toGMTString();
-      const ShaObj = new JsSHA('SHA-1', 'TEXT');
-      ShaObj.setHMACKey(this.AppKey, 'TEXT');
-      /* eslint-disable */
-      ShaObj.update('x-date: ' + GMTString);
-      const HMAC = ShaObj.getHMAC('B64');
-      const Authorization = 'hmac username=\"' + this.AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
-      return { Authorization, 'X-Date': GMTString };
+    showModal(data) {
+      this.$refs.modalactret.opModel(data);
     },
   },
   created() {
-    let area = ['Taichung', 'NewTaipei', 'NantouCounty', 'Tainan','HualienCounty', 'KinmenCounty'];
-    let url = area.map(item => `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel/${item}?$top=10&$format=JSON`)
-    url.forEach(item =>
-    this.$http.get(item, { headers: this.getAuthorizationHeader() })
-    .then((res)=>{
-      // 取出有照片資料
-      let arry = res.data.filter(item => item.Picture.PictureUrl1 !== undefined);
-      //留兩筆
-      arry.length = 2;
-      this.data.push(...arry)
-      // console.log(this.data)
-    })
-    .catch((res)=>console.log(res)))
+    const area = ['Taichung', 'NewTaipei', 'NantouCounty', 'Tainan', 'HualienCounty', 'KinmenCounty'];
+    const url = area.map((item) => `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel/${item}?$top=20&$format=JSON`);
+    url.forEach((item) => {
+      this.$http.get(item, { headers: getAuthorizationHeader() })
+        .then((res) => {
+          const arry = res.data.filter((hotelData) => hotelData.Picture.PictureUrl1 !== undefined);
+          arry.length = 2;
+          this.data.push(...arry);
+        });
+    });
+    // console.log(this.data);
   },
 };
 </script>

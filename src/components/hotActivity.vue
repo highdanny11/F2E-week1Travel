@@ -7,7 +7,8 @@
       </h2>
       <div class="row gx-md-17 gx-lg-21 gy-3x5 gy-lg-11">
         <div class="col-md-6" v-for="item in data" :key="item.ID">
-          <div class="card mb-3 w-100 py-lg-4 ps-lg-4 pe-lg-6 p-3 border-0 boxshadow-m">
+          <div
+          class="card mb-3 w-100 py-lg-4 ps-lg-4 pe-lg-6 p-3 border-0 boxshadow-m">
             <div class="row g-0 gx-4">
               <div class="col-lg-5 col-4 overflow-hidden">
                 <img class="card-img" :src="item.Picture.PictureUrl1" :alt="item.Location">
@@ -15,9 +16,9 @@
               <div class="col-lg-7 col-8">
                 <div class="card-body h-100 p-0
                 d-flex d-lg-block flex-column justify-content-between">
-                  <h5 class="card-title">{{item.Name}}</h5>
+                  <h5 class="card-title text-overflow">{{item.ActivityName}}</h5>
                   <!-- 卡片連結用 -->
-                  <a href="#" class="stretched-link" @click.prevent="showref(item)"></a>
+                  <a href="#" class="stretched-link" @click.prevent="showModal(item)"></a>
                   <p class="card-text text-overflowHiden5 text-success d-none d-lg--webkit-box">
                     {{item.Description}}
                   </p>
@@ -36,15 +37,15 @@
       </div>
     </div>
   </section>
-  <modalActivity ref="modalactivity" />
+  <modalActRet ref="modalactret" />
 </template>
 <script>
-import JsSHA from 'jssha';
-import modalActivity from '@/components/modalActivity.vue';
+import modalActRet from '@/components/modalActRet.vue';
+import getAuthorizationHeader from '@/assets/javascript/AuthorizationHeader';
 
 export default {
   components: {
-    modalActivity,
+    modalActRet,
   },
   data() {
     return {
@@ -54,26 +55,17 @@ export default {
     };
   },
   methods: {
-    getAuthorizationHeader() {
-      const GMTString = new Date().toGMTString();
-      const ShaObj = new JsSHA('SHA-1', 'TEXT');
-      ShaObj.setHMACKey(this.AppKey, 'TEXT');
-      /* eslint-disable */
-      ShaObj.update('x-date: ' + GMTString);
-      const HMAC = ShaObj.getHMAC('B64');
-      const Authorization = 'hmac username=\"' + this.AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
-      return { Authorization, 'X-Date': GMTString };
-    },
-    showref(data) {
-      this.$refs.modalactivity.opModel(data);
+    showModal(data) {
+      this.$refs.modalactret.opModel(data);
     },
   },
   created() {
-    this.$http.get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$top=90&$format=JSON', { headers: this.getAuthorizationHeader() })
+    this.$http.get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$top=90&$format=JSON',
+      { headers: getAuthorizationHeader() })
       .then((res) => {
-        const set = new Set();
-        this.data = res.data.filter(item => item.Picture.PictureUrl1 !== undefined && !set.has(item.City) ? set.add(item.City) : false);
+        this.data = res.data.filter((item) => item.Picture.PictureUrl1 !== undefined);
         this.data.length = 4;
+        console.log(this.data);
         // 把有照片的活動抓出來，不要重複地區，只要四筆。
       })
       .catch((res) => {

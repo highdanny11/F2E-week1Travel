@@ -1,0 +1,48 @@
+.result {
+  margin-top: 56px;
+  @include media-breakpoint-up(md) {
+    margin-top: 64px;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-top: 83px;
+  }
+  & h2 {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  & .card {
+    height: 188px;
+    @include media-breakpoint-up(lg) {
+      height: 243px;
+    }
+    &:hover img{
+      transform: rotate(1.5deg);
+    }
+  }
+  & .card-img-top {
+    height: 96px;
+    transition: all .3s ease;
+    @include media-breakpoint-up(lg) {
+      height: 137px;
+    }
+  }
+  & .card-title {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+  & .card-footerTitle {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 300;
+  }
+  & .col {
+    margin-bottom: 19px;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 27px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 35px;
+    }
+  }
+}
