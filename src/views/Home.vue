@@ -33,7 +33,9 @@
           <div class="roundShapeIcon roundShapeIcon-danger me-2">
             <div class="round"></div>
           </div>
-          <a href="#" class="stretched-link link-danger">景點交通</a>
+          <router-link
+          to='/Traffic'
+          class="stretched-link link-danger">景點交通</router-link>
         </li>
       </ul>
     </div>
@@ -49,8 +51,8 @@
           @click.prevent="type = 'liveFood',option = 'all'" to="/FoodLive"
           class="header-options-link text-decoration-none">美食住宿</router-link></li>
         <li>
-          <a href="#"
-          class="header-options-link text-decoration-none">景點交通</a></li>
+          <router-link to='/Traffic'
+          class="header-options-link text-decoration-none">景點交通</router-link></li>
       </ul>
     </div>
     <div class="input-group mb-2 d-md-none">
@@ -59,8 +61,7 @@
         aria-label="Recipient's username" aria-describedby="button-addon2">
       </div>
     <!-- 手機出現的功能列表-->
-    <div class="d-flex align-items-center d-md-none">
-        <div class="input-group">
+    <div class="input-group  d-md-none">
           <select v-model="option"
           class="form-select me-1 inputShadow rounded-3">
             <option
@@ -78,11 +79,10 @@
           <router-link :to="`/result/${type}/${option}/${area}?q=${search}`"
           class="searchIcon rounded-3">
             <img :src="require('../assets/img/search.svg')" alt=""></router-link>
-        </div>
     </div>
   </nav>
 </div>
-  <!-- 選到交通會關閉，桌機出現的banner 功能列表 -->
+  <!-- 桌機出現的banner 功能列表 -->
   <div class="bg-white d-none d-lg-block">
     <div class="banner boxshadow">
       <div class="banner_wrap d-flex justify-content-center align-items-center">

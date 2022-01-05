@@ -22,6 +22,7 @@ $utilities: map-merge(
     "width": map-merge(
       map-get($utilities, "width"),
       (
+        responsive: true,
         values: map-merge(
           map-get(map-get($utilities, "width"), "values"),
           (
@@ -71,6 +72,28 @@ $utilities: map-merge(
       property: overflow,
       responsive: true,
       values: auto hidden visible scroll,
+    ),
+    "viewport-height": (
+      property: height,
+      responsive: true,
+      class: vh,
+      values: (
+        100: 100vh
+      )
+    ),
+    "min-viewport-width": map-merge(
+      map-get($utilities, "min-viewport-width"),
+      (
+        responsive: true,
+        class: min-h,
+        values: map-merge(
+          map-get(map-get($utilities, "min-viewport-width"), "values"),
+          (
+            100: 100px,
+            120: 120px,
+          ),
+        ),
+      ),
     ),
   )
 );

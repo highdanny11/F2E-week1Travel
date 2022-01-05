@@ -30,6 +30,11 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/Traffic',
+    name: 'Traffic',
+    component: () => import('../views/Front/Traffic.vue'),
+  },
 ];
 
 const router = createRouter({
