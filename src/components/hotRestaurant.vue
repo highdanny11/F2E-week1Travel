@@ -51,7 +51,6 @@ export default {
     this.$http.get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=90&$format=JSON',
       { headers: getAuthorizationHeader() })
       .then((res) => {
-        // console.log(res.data);
         this.data = res.data.filter((item) => item.Picture.PictureUrl1 !== undefined);
         this.data.length = 12;
         // 把有照片的活動抓出來，不要重複地區，只要四筆。

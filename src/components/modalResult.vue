@@ -132,7 +132,6 @@ export default {
       this.data = {
         ...data,
       };
-      console.log(this.data);
       Object.keys(this.data).forEach((item) => {
         if (this.data[item] === undefined) {
           delete this.data[item];

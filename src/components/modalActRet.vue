@@ -100,7 +100,6 @@ export default {
   methods: {
     opModel(data) {
       this.showActRetModal.show();
-      console.log(data);
       this.images = [];
       this.data = { ...data };
       this.imgPage = 1;

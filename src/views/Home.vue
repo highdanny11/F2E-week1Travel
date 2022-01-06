@@ -85,7 +85,8 @@
   <!-- 桌機出現的banner 功能列表 -->
   <div class="bg-white d-none d-lg-block">
     <div class="banner boxshadow">
-      <div class="banner_wrap d-flex justify-content-center align-items-center">
+      <div :class="banner"
+      class="banner_wrap d-flex justify-content-center align-items-center">
         <div class="d-flex flex-column">
           <h1>
           Welc<span class="text-primary">o</span>me
@@ -104,7 +105,6 @@
                 :value="category.val"
                 v-for="category in categorys"
                 :key="category">{{category.text}}</option>
-                <!-- <option value="活動">活  動</option> -->
               </select>
               <select class="form-select me-1 rounded-3" v-model="area">
                 <option value="all" selected>不分縣市</option>
@@ -114,7 +114,7 @@
               <!-- 桌機搜尋篩選功能列表 -->
               <router-link :to="`/result/${type}/${option}/${area}?q=${search}`"
               class="searchIcon rounded-3">
-                <img :src="require('../assets/img/search.svg')" alt=""></router-link>
+                <img :src="require('@/assets/img/search.svg')" alt=""></router-link>
             </div>
           </div>
         </div>
@@ -198,6 +198,8 @@ export default {
       type: 'scapeAct',
       isRouterAlive: true,
       place: [],
+      countID: 0,
+      count: 0,
     };
   },
   provide() {
@@ -209,6 +211,17 @@ export default {
   computed: {
     categorys() {
       return this.options[this.type];
+    },
+    banner() {
+      let str = [];
+      if (this.count === 0) {
+        str = ['banner_imgIndex'];
+      } else if (this.count === 1) {
+        str = ['banner_imgBed'];
+      } else {
+        str = ['banner_imgSea'];
+      }
+      return str;
     },
   },
   methods: {
@@ -222,9 +235,23 @@ export default {
       this.area = area;
       this.$router.push(`/result/${this.type}/${this.option}/${area}?q=${this.search}`);
     },
+    countSecond() {
+      clearInterval(this.countID);
+      this.countID = setInterval(() => {
+        this.count += 1;
+      }, 15000);
+    },
+  },
+  watch: {
+    count() {
+      if (this.count > 2) {
+        this.count = 0;
+      }
+    },
   },
   created() {
     this.place = [...place];
+    this.countSecond();
   },
 };
 </script>

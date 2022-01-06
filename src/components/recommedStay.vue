@@ -57,9 +57,11 @@ export default {
           const arry = res.data.filter((hotelData) => hotelData.Picture.PictureUrl1 !== undefined);
           arry.length = 2;
           this.data.push(...arry);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     });
-    // console.log(this.data);
   },
 };
 </script>

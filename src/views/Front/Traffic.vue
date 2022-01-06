@@ -188,6 +188,9 @@ export default {
           this.searchRouteStops = res.data;
           this.countSecond();
           this.getStopsTime();
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     getStopsTime() { // 預計到達時間
@@ -195,6 +198,9 @@ export default {
       this.$http.get(url, { headers: AuthorizationHeader() })
         .then((res) => {
           this.updataTime(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     countSecond() { // 計時器15秒會清除本身
@@ -388,7 +394,9 @@ export default {
     this.$http.get(url, { headers: AuthorizationHeader() })
       .then((res) => {
         this.routeData = res.data;
-        console.log(this.routeData);
+      })
+      .catch((err) => {
+        console.log(err);
       });
     this.place = place;
   },

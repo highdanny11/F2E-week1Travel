@@ -1,4 +1,12 @@
 <template>
+  <Loading :active="isloading">
+    <div class="d-flex justify-content-between align-items-center"
+    style="width:280px;">
+      <div class="loading loading-triangle"></div>
+      <div class="loading loading-square"></div>
+      <div class="loading loading-circle"></div>
+    </div>
+  </Loading>
   <section class="result" ref="result">
     <div class="container">
       <h2 class="d-flex align-items-center mb-3" v-if="page">
@@ -70,6 +78,7 @@ export default {
       perpage: 20,
       totalPageData: [],
       currentPage: 1,
+      isloading: false,
     };
   },
   props: ['option', 'area', 'type', 'que'],
@@ -81,30 +90,54 @@ export default {
         if (this.option === 'all') {
           if (this.area === 'all') {
             // console.log('有搜尋值、無類別、無地區');
+            this.isloading = true;
             await this.searchAll(this.que, this.ClassType)
               .then(([res1, res2]) => {
+                this.isloading = false;
                 this.updata([...res1.data, ...res2.data]);
+              })
+              .catch((err) => {
+                this.isloading = false;
+                console.log(err);
               });
           } else {
             // console.log('有搜尋值、無類別、有地區');
+            this.isloading = true;
             await this.searchAllarea(this.area, this.que, this.ClassType)
               .then(([res1, res2]) => {
+                this.isloading = false;
                 this.updata([...res1.data, ...res2.data]);
+              })
+              .catch((err) => {
+                this.isloading = false;
+                console.log(err);
               });
           }
         } else {
           if (this.area === 'all') {
             // console.log('有搜尋值、有類別、無地區');
+            this.isloading = true;
             await this.searchOptions(this.option, this.que)
               .then((res) => {
+                this.isloading = false;
                 this.updata([...res.data]);
+              })
+              .catch((err) => {
+                this.isloading = false;
+                console.log(err);
               });
             return;
           }
           // console.log('有搜尋值、有類別、有地區');
+          this.isloading = true;
           await this.searchOptionsArea(this.option, this.area, this.que)
             .then((res) => {
+              this.isloading = false;
               this.updata([...res.data]);
+            })
+            .catch((err) => {
+              this.isloading = false;
+              console.log(err);
             });
         }
       } else {
@@ -113,7 +146,6 @@ export default {
             // console.log('無搜尋值、無類別、無地區');
             // 跳轉首頁
             if (this.type === 'scapeAct') {
-              console.log(this.type);
               this.$router.push({
                 path: '/',
               });
@@ -125,25 +157,43 @@ export default {
             return;
           }
           // console.log('無搜尋值、無類別、有地區');
+          this.isloading = true;
           await this.getAllarea(this.area, this.ClassType)
             .then(([res1, res2]) => {
               // console.log(res1.data, res2.data);
+              this.isloading = false;
               this.updata([...res1.data, ...res2.data]);
+            })
+            .catch((err) => {
+              this.isloading = false;
+              console.log(err);
             });
           return;
         }
         if (this.area === 'all') {
           // console.log('無搜尋值、有類別、無地區');
+          this.isloading = true;
           await this.getOptions(this.option)
             .then((res) => {
+              this.isloading = false;
               this.updata([...res.data]);
+            })
+            .catch((err) => {
+              this.isloading = false;
+              console.log(err);
             });
           return;
         }
         // console.log('無搜尋值、有類別、有地區1');
+        this.isloading = true;
         await this.getOptionsArea(this.option, this.area)
           .then((res) => {
+            this.isloading = false;
             this.updata([...res.data]);
+          })
+          .catch((err) => {
+            this.isloading = false;
+            console.log(err);
           });
       }
     },

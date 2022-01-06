@@ -65,7 +65,6 @@ export default {
       .then((res) => {
         this.data = res.data.filter((item) => item.Picture.PictureUrl1 !== undefined);
         this.data.length = 4;
-        console.log(this.data);
         // 把有照片的活動抓出來，不要重複地區，只要四筆。
       })
       .catch((res) => {
