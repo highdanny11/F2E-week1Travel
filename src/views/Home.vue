@@ -12,30 +12,30 @@
       alt="">
       </router-link>
       <ul class="d-none d-md-flex list-unstyled">
-        <li class="d-flex position-relative align-items-end">
+        <li class="d-flex position-relative align-items-end hoverLine hoverLine-primary">
           <div class="roundShapeIcon roundShapeIcon-primary me-2">
               <div class="triangle"></div>
           </div>
           <router-link href="#" @click.prevent="type = 'scapeAct',option = 'all'"
           to="/"
-          class="stretched-link link-primary lh-24">台灣景點</router-link>
+          class="stretched-link link-primary lh-24 text-decoration-none">台灣景點</router-link>
         </li>
-        <li class="d-flex position-relative align-items-end ms-6">
+        <li class="d-flex position-relative align-items-end hoverLine hoverLine-secondary ms-6">
           <div class="roundShapeIcon roundShapeIcon-secondary me-2">
             <div class="square"></div>
           </div>
           <router-link href="#" @click.prevent="type = 'liveFood',option = 'all'"
           to="/FoodLive"
-          class="stretched-link link-secondary"
+          class="stretched-link link-secondary text-decoration-none"
           >美食住宿</router-link>
         </li>
-        <li class="d-flex position-relative align-items-end ms-6">
+        <li class="d-flex position-relative align-items-end hoverLine hoverLine-danger ms-6">
           <div class="roundShapeIcon roundShapeIcon-danger me-2">
             <div class="round"></div>
           </div>
           <router-link
           to='/Traffic'
-          class="stretched-link link-danger">景點交通</router-link>
+          class="stretched-link link-danger text-decoration-none">景點交通</router-link>
         </li>
       </ul>
     </div>
@@ -152,14 +152,19 @@
       </div>
   </div>
   <router-view v-if="isRouterAlive"></router-view>
+  <totopBtn v-if="changeTotopbtn"></totopBtn>
   <footer class="text-center text-success bg-white py-lg-6 py-2">
     Taiwan Tourguide  © Code: Sam  /  Design: KT</footer>
 </template>
 
 <script>
 import place from '@/assets/json/place.json';
+import totopBtn from '@/components/totopBtn.vue';
 
 export default {
+  components: {
+    totopBtn,
+  },
   data() {
     return {
       search: '',
@@ -200,6 +205,7 @@ export default {
       place: [],
       countID: 0,
       count: 0,
+      windowY: 0,
     };
   },
   provide() {
@@ -223,6 +229,12 @@ export default {
       }
       return str;
     },
+    changeTotopbtn() {
+      if (this.windowY > 300) {
+        return true;
+      }
+      return false;
+    },
   },
   methods: {
     updataView() {
@@ -241,6 +253,9 @@ export default {
         this.count += 1;
       }, 15000);
     },
+    countScroll() {
+      this.windowY = window.scrollY;
+    },
   },
   watch: {
     count() {
@@ -252,6 +267,12 @@ export default {
   created() {
     this.place = [...place];
     this.countSecond();
+  },
+  mounted() {
+    window.addEventListener('scroll', this.countScroll);
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.countScroll);
   },
 };
 </script>

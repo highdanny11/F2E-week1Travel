@@ -295,6 +295,7 @@ export default {
       handler(val, old) {
         if (val !== old) {
           this.updataView();
+          this.toTop();
         }
       },
       deep: true,

@@ -1,0 +1,31 @@
+.hoverLine {
+  position: relative;
+  &.hoverLine-primary::after{
+    background-color: $primary;
+  }
+  &.hoverLine-secondary::after {
+    background-color: $secondary;
+  }
+  &.hoverLine-danger::after {
+    background-color: $danger;
+  }
+  &.hoverLine-primary::after,
+  &.hoverLine-secondary::after,
+  &.hoverLine-danger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  &.hoverLine-primary:hover::after,
+  &.hoverLine-secondary:hover::after,
+  &.hoverLine-danger:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
