@@ -6,7 +6,7 @@
         熱門美食
       </h2>
       <div class="row row-cols-lg-5 row-cols-md-4 row-cols-2 gx-2">
-        <div class="col" v-for="(item , i) in data" :key="i">
+        <div class="col" v-for="item in data" :key="item.RestaurantName">
           <div class="card p-3 boxshadow-m">
             <img
             :src="item.Picture.PictureUrl1"
