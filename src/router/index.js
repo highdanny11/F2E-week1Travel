@@ -35,6 +35,11 @@ const routes = [
     name: 'Traffic',
     component: () => import('../views/Front/Traffic.vue'),
   },
+  {
+    path: '/Test',
+    name: 'Test',
+    component: () => import('../views/Front/Test.vue'),
+  },
 ];
 
 const router = createRouter({

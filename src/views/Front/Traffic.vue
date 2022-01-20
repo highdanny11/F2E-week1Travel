@@ -125,7 +125,7 @@
       <ul :class="{'vh-100': !stops[0]}"
       class="list-unstyled row row-cols-md-2 row-cols-1">
       <div class="col">
-        <div v-for="item in stops.slice(0,Math.round(stops.length / 2))" :key="item"
+        <div v-for="item in stops.slice(0,Math.round(stops.length / 2))" :key="item.StopName.Zh_tw"
         class="d-flex align-items-center mb-3">
           <div :class="changTimeClass(changTimeInfo(item))"
           class="rounded-3 border-3 border py-3 min-h-120
@@ -134,7 +134,8 @@
         </div>
       </div>
       <div class="col">
-        <div v-for="item in stops.slice(Math.round(stops.length / 2),stops.length)" :key="item"
+        <div v-for="item in stops.slice(Math.round(stops.length / 2),stops.length)"
+        :key="item.StopName.Zh_tw"
         class="d-flex align-items-center mb-3">
           <div :class="changTimeClass(changTimeInfo(item))"
           class="rounded-3 border-3 border py-3 min-h-120
