@@ -189,7 +189,7 @@ export default {
       this.second = 0;
       this.storageRouteName = this.routeName;
       this.clearCountsecond();
-      const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${this.routeName}?$&$format=JSON`;
+      const url = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Bus/StopOfRoute/TaiwanTrip/${this.routeName}?$&$format=JSON`;
       this.$http.get(url, { headers: AuthorizationHeader() })
         .then((res) => {
           this.searchRouteStops = res.data;
@@ -201,7 +201,7 @@ export default {
         });
     },
     getStopsTime() { // 預計到達時間
-      const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${this.storageRouteName}?`;
+      const url = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Bus/EstimatedTimeOfArrival/TaiwanTrip/${this.storageRouteName}?`;
       this.$http.get(url, { headers: AuthorizationHeader() })
         .then((res) => {
           this.updataTime(res.data);
@@ -406,7 +406,7 @@ export default {
     },
   },
   created() {
-    const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON';
+    const url = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/Bus/Route/TaiwanTrip?$format=JSON';
     this.$http.get(url, { headers: AuthorizationHeader() })
       .then((res) => {
         this.routeData = res.data;
