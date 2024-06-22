@@ -60,7 +60,7 @@ export default {
     },
   },
   created() {
-    this.$http.get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$top=90&$format=JSON',
+    this.$http.get('https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?$top=90&$format=JSON',
       { headers: getAuthorizationHeader() })
       .then((res) => {
         this.data = res.data.filter((item) => item.Picture.PictureUrl1 !== undefined);

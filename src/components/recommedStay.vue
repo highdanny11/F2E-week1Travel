@@ -50,7 +50,7 @@ export default {
   },
   created() {
     const area = ['Taichung', 'NewTaipei', 'NantouCounty', 'Tainan', 'HualienCounty', 'KinmenCounty'];
-    const url = area.map((item) => `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel/${item}?$top=20&$format=JSON`);
+    const url = area.map((item) => `https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel/${item}?$top=20&$format=JSON`);
     url.forEach((item) => {
       this.$http.get(item, { headers: getAuthorizationHeader() })
         .then((res) => {
